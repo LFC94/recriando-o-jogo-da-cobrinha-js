@@ -24,3 +24,7 @@ body {
 canvas {    
     border: #000 2px solid;
 }
+
+.food {
+    border-radius: 1px;
+}
