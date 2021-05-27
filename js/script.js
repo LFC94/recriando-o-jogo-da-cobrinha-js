@@ -1,17 +1,22 @@
 var can_snake = document.getElementById("can_snake");
+var smal_pontuacao = document.getElementById("pontuacao");
 var context = can_snake.getContext("2d");
 var box = 32;
 var mutiplicadorTela = 16;
+
+var valPoint = 0;
+
 var snake = [];
+
 snake[0] = {
     x: 8 * box,
     y: 8 * box,
 };
 
-var food = {
-    x: Math.floor(Math.random()* 15 + 1) * box ,
-    y: Math.floor(Math.random()* 15 + 1) * box
-}
+var point = {
+    x: 0,
+    y: 0
+};
 
 let direcao = "r";
 
@@ -27,26 +32,33 @@ function criarSnake() {
     }
 }
 
-function criarFood() {
-    context.fillStyle = "red food";
-    context.fillRect(food.x, food.y, box-1, box-1)
+function criarPoint() {
+    context.fillStyle = "red";
+    context.fillRect(point.x, point.y, box - 1, box - 1)
+}
+
+function iniciarPonto() {
+    point = {
+        x: Math.floor(Math.random() * 15 + 1) * box,
+        y: Math.floor(Math.random() * 15 + 1) * box
+    }
 }
 
 function iniciarJogo() {
 
-    if (snake[0].x > ((mutiplicadorTela - 1) * box) && direcao == "r") {
+    if (snake[0].x > ((mutiplicadorTela - 1) * box) && direcao != "l") {
         snake[0].x = 0;
-    } else if (snake[0].x < 0 && direcao == "l") {
+    } else if (snake[0].x < 0 && direcao != "r") {
         snake[0].x = mutiplicadorTela * box;
-    } else if (snake[0].y > ((mutiplicadorTela - 1) * box) && direcao == "d") {
+    } else if (snake[0].y > ((mutiplicadorTela - 1) * box) && direcao != "u") {
         snake[0].y = 0;
-    } else if (snake[0].y < 0 && direcao == "u") {
+    } else if (snake[0].y < 0 && direcao != "d") {
         snake[0].y = mutiplicadorTela * box;
     }
 
     criarBG();
     criarSnake();
-    criarFood();
+    criarPoint();
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
@@ -58,18 +70,35 @@ function iniciarJogo() {
 
     } else if (direcao == "u") {
         snakeY -= box;
-    } else if (direcao == "d") { 
-        snakeY += box; 
+    } else if (direcao == "d") {
+        snakeY += box;
     }
 
-    snake.pop();
+    if (snakeX == point.x && snakeY == point.y) {
+        iniciarPonto();
+        valPoint += 100 ;
+    }else{
+        snake.pop();
+    }
 
     let newHead = {
         x: snakeX,
         y: snakeY,
     };
 
+    // a cada 10 atualizacao (iniciando a cada 1 seguendo) aumeta 10 pontos
+    if(Math.floor((valPoint-parseInt(valPoint)) * 100) == 99){
+        valPoint = parseInt(valPoint) + 10;
+    }else{
+        valPoint +=  0.01;
+    } 
+
+    smal_pontuacao.innerHTML = parseInt(valPoint);
+
     snake.unshift(newHead);
+
+    //Quanto mais ponto mais rapido a cobriva vai
+    setTimeout(iniciarJogo, 100 - ((valPoint/100) ) );
 }
 
 function movimentar(event) {
@@ -81,4 +110,6 @@ function movimentar(event) {
 
 document.addEventListener("keydown", movimentar);
 
-let jogo = setInterval(iniciarJogo, 100);
+iniciarPonto();
+
+iniciarJogo()

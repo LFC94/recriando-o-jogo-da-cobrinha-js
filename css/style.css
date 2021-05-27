@@ -1,10 +1,9 @@
 *{
     padding: 0;
-    margin: 0;
+    margin: 3px;
     box-sizing: border-box;
     text-decoration: none;
     font-family: sans-serif;
-    font-size: 14px;
 }
 
 body {
@@ -14,17 +13,19 @@ body {
     justify-content: center;
 }
 
-.div_canvas {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-}
-
 canvas {    
     border: #000 2px solid;
 }
 
-.food {
-    border-radius: 1px;
+.div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div_pontuacao {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 512px;
 }
