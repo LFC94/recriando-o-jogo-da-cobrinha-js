@@ -6,20 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <script defer src="js/script.js"></script>
-    <title>Snake Game</title>
+    <title>SNAKE GAMER!</title>
   </head>
   <body>
     <div class="div">
-      <h1>Snake Game</h1>
+      <h1>SNAKE GAMER!</h1>
     </div>
     <div class="div">
       <div class="div_pontuacao">
-        <h5>Pontuação : <small id="pontuacao">0</small></h5>
+        <button id="btnReset" class="btnReset" type="button" onclick="gamerOver()" style="display: none;">
+          Stop
+        </button>
+        <p id="pontuacao"></h5>
       </div>
     </div>
     <div class="div">
       <div class="inicio-game" id="inicio_game">
         <div class="div">
+          <h2 id="tituloInicio">SNAKE GAMER</h2> 
+        </div>
+        <div class="div div_titulo">
+          <p id="pontuacao_over" ></p>
+        </div>
+        <div class="div ">
           <button class="btnStart" type="button" onclick="start()">Start</button>
         </div>
       </div>

@@ -23,11 +23,16 @@ canvas {
     justify-content: center;
 }
 
+.div_titulo {
+    height: 75px;
+}
+
 .div_pontuacao {
     display: flex;
     align-items: center;
     justify-content: right;
     width: 512px;
+    height: 28px;
 }
 
 .inicio-game 
@@ -52,4 +57,29 @@ canvas {
     margin-top: 10px;
     font-size: large;
     font-weight: bold;
+}
+
+.btnReset {
+    background-color: salmon;  
+    border: 1px green;
+    border-radius: 5px;
+    width: 70px;
+    padding: 3px;
+    font-size: smaller;
+    font-weight: bold;
+}
+
+#pontuacao_over {
+    font-size: small;
+    text-align: center;
+}
+
+#pontuacao {
+  font-size: smaller;
+  width: 100px;
+}
+
+#tituloInicio {
+    font-size: xx-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }

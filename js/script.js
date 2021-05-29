@@ -1,11 +1,15 @@
 var can_snake = document.getElementById("can_snake");
 var smal_pontuacao = document.getElementById("pontuacao");
 var divIniciarGame = document.getElementById("inicio_game");
+var tituloInicio = document.getElementById("tituloInicio");
+var btnReset = document.getElementById("btnReset");
 var context = can_snake.getContext("2d");
 var box = 32;
 var mutiplicadorTela = 16;
 
 var timeJogo, valPoint, snake, point;
+
+var jogoRodando = false;
 
 let direcao = "r";
 
@@ -15,8 +19,11 @@ function criarBG() {
 }
 
 function criarSnake() {
-    for (let index = 0; index < snake.length; index++) {
-        context.fillStyle = "green";
+    for (let index = 0 ; index < snake.length; index++) {
+        scala = 1 - (index * (parseInt(snake.length/5) * 0.01));
+        console.log(index, (parseInt(snake.length/5) * 0.01), (index * (parseInt(snake.length/5) * 0.01)));
+        // context.fillStyle = index==0 ? "red" : "green";
+        context.fillStyle = 'rgba(0, 128, 0, ' + scala+ ')';        
         context.fillRect(snake[index].x, snake[index].y, box, box);
     }
 }
@@ -39,7 +46,21 @@ function criarObjetos() {
     criarPoint();
 }
 
+function gamerOver() {
+    tituloInicio.innerHTML = "GAMER OVER";
+    document.getElementById("pontuacao_over").innerHTML = "Pontuação:" + parseInt(valPoint);
+    criarBG();
+    divIniciarGame.removeAttribute("style")
+    smal_pontuacao.innerHTML = "";    
+    jogoRodando = false;
+    btnReset.style.display = 'none';
+}
+
 function iniciarJogo() {
+
+    if (!jogoRodando) {
+        return
+    }
 
     if (snake[0].x > ((mutiplicadorTela - 1) * box) && direcao != "l") {
         snake[0].x = 0;
@@ -53,9 +74,7 @@ function iniciarJogo() {
 
     for (let index = 1; index < snake.length; index++) {
         if (snake[0].x == snake[index].x && snake[0].y == snake[index].y) {
-            alert("Game Over");
-            criarBG();
-            divIniciarGame.removeAttribute("style")
+            gamerOver()
             return;
         }   
     }
@@ -95,7 +114,7 @@ function iniciarJogo() {
         valPoint +=  0.01;
     } 
 
-    smal_pontuacao.innerHTML = parseInt(valPoint);
+    smal_pontuacao.innerHTML = "Pontuação:" + parseInt(valPoint);
 
     snake.unshift(newHead);
 
@@ -114,6 +133,7 @@ document.addEventListener("keydown", movimentar);
 
 function start() {
     divIniciarGame.style.display = 'none';
+    jogoRodando = true;
 
     snake = [{
         x: 8 * box,
@@ -125,7 +145,7 @@ function start() {
         y: 0
     };
     valPoint = 0;
-
+    btnReset.removeAttribute("style");
     iniciarPonto();
     iniciarJogo();  
 }
