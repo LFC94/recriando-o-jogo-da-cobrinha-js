@@ -1,22 +1,11 @@
 var can_snake = document.getElementById("can_snake");
 var smal_pontuacao = document.getElementById("pontuacao");
+var divIniciarGame = document.getElementById("inicio_game");
 var context = can_snake.getContext("2d");
 var box = 32;
 var mutiplicadorTela = 16;
 
-var valPoint = 0;
-
-var snake = [];
-
-snake[0] = {
-    x: 8 * box,
-    y: 8 * box,
-};
-
-var point = {
-    x: 0,
-    y: 0
-};
+var timeJogo, valPoint, snake, point;
 
 let direcao = "r";
 
@@ -44,6 +33,12 @@ function iniciarPonto() {
     }
 }
 
+function criarObjetos() {
+    criarBG();
+    criarSnake();
+    criarPoint();
+}
+
 function iniciarJogo() {
 
     if (snake[0].x > ((mutiplicadorTela - 1) * box) && direcao != "l") {
@@ -56,9 +51,16 @@ function iniciarJogo() {
         snake[0].y = mutiplicadorTela * box;
     }
 
-    criarBG();
-    criarSnake();
-    criarPoint();
+    for (let index = 1; index < snake.length; index++) {
+        if (snake[0].x == snake[index].x && snake[0].y == snake[index].y) {
+            alert("Game Over");
+            criarBG();
+            divIniciarGame.removeAttribute("style")
+            return;
+        }   
+    }
+
+    criarObjetos();
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
@@ -110,6 +112,22 @@ function movimentar(event) {
 
 document.addEventListener("keydown", movimentar);
 
-iniciarPonto();
+function start() {
+    divIniciarGame.style.display = 'none';
 
-iniciarJogo()
+    snake = [{
+        x: 8 * box,
+        y: 8 * box,
+    }];
+
+    point = {
+        x: 0,
+        y: 0
+    };
+    valPoint = 0;
+
+    iniciarPonto();
+    iniciarJogo();  
+}
+
+criarBG();
