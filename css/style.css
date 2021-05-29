@@ -9,18 +9,24 @@
 body {
     width: 100%;
     height: 100%;
-    background-color: #FFF;
     justify-content: center;
+    background-color: #000;
 }
 
 canvas {    
-    border: #000 2px solid;
+    border: rgb(114, 114, 114) 2px solid;
 }
 
 .div {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.div_head {
+    font-size: xx-large;
+    width: 512px;
+    color: #FFF;
 }
 
 .div_titulo {
@@ -33,6 +39,14 @@ canvas {
     justify-content: right;
     width: 512px;
     height: 28px;
+}
+
+.div_food {
+    display: flex;
+    justify-content: right;
+    width: 512px;
+    color: #FFF;
+    align-items: center;
 }
 
 .inicio-game 
