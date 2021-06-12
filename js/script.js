@@ -154,6 +154,25 @@ function start() {
 
 criarBG();
 
+
+var params = window.location.search.substring(1).split('&');
+
+//Criar objeto que vai conter os parametros
+var paramArray = {};
+
+//Passar por todos os parametros
+for(var i=0; i<params.length; i++) {
+    //Dividir os parametros chave e valor
+    var param = params[i].split('=');
+
+    if(param[0] == "telalimpa" && (+param[1]) == 1){
+        document.getElementById("div_head").style.display='none';
+        document.getElementById("div_food").style.display='none';
+    }
+
+}
+
+
 function gravarRank(nome, point){
     var form = new FormData();
     form.append("name", nome.toUpperCase());
