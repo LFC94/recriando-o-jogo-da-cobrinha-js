@@ -21,8 +21,6 @@ function criarBG() {
 function criarSnake() {
     for (let index = 0 ; index < snake.length; index++) {
         scala = 1 - (index * (parseInt(snake.length/5) * 0.01));
-        console.log(index, (parseInt(snake.length/5) * 0.01), (index * (parseInt(snake.length/5) * 0.01)));
-        // context.fillStyle = index==0 ? "red" : "green";
         context.fillStyle = 'rgba(0, 128, 0, ' + scala+ ')';        
         context.fillRect(snake[index].x, snake[index].y, box, box);
     }
@@ -49,6 +47,10 @@ function criarObjetos() {
 function gamerOver() {
     tituloInicio.innerHTML = "GAMER OVER";
     document.getElementById("pontuacao_over").innerHTML = "Pontuação:" + parseInt(valPoint);
+    name = prompt("Sua pontuação foi " + parseInt(valPoint) + " \n Informe seu nome:");
+    if (name != null){
+        gravarRank(name, parseInt(valPoint));
+    }
     criarBG();
     divIniciarGame.removeAttribute("style")
     smal_pontuacao.innerHTML = "";    
@@ -151,3 +153,78 @@ function start() {
 }
 
 criarBG();
+
+function gravarRank(nome, point){
+    var form = new FormData();
+    form.append("name", nome.toUpperCase());
+    form.append("point", point);
+
+    var settings = {
+        "url": "http://backend.lfcapp.com.br/api/snake",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Authorization": "Bearer " + $("#token").val()
+        },
+        "processData": false,
+        "mimeType": "multipart/form-data",
+        "contentType": false,
+        "data": form
+    };
+
+    $.ajax(settings).done(function (response) {
+        buscaListaRank();
+    });
+}
+
+function buscaListaRank (){
+    var settings = {
+        "url": "http://backend.lfcapp.com.br/api/snake",
+        "method": "GET",
+        "headers": {
+            "Authorization": "Bearer " + $("#token").val()
+        },
+    };
+
+    $.ajax(settings).done(function (response) {
+        lista_Rank = $("#lista_rank");
+        lista_Rank.empty();
+        if (+response.status === 1) {
+            mensage = response.mensage;
+            count = +mensage.length > 5 ? 5 : mensage.length;
+            lista_Rank.empty();
+            for (var index = 0; index < count; index++) {
+                item = mensage[index];
+                lista_Rank.append("<li>" + item.name + " .... " + item.point + "</li>")
+            }
+        } else {
+            lista_Rank.append("Houve um erro ao conectar no servidor");
+            console.log(response)
+        }
+    });
+}
+
+function gerarToken (){
+    var settings = {
+        "url": "http://backend.lfcapp.com.br/api/auth/login",
+        "method": "POST",
+        "timeout": 0,
+        "async": false,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "username": "snake",
+            "password": "snakelfcapp"
+        }),
+    };
+
+    $.ajax(settings).done(function (response) {
+        $("#token").val(response.mensage.access_token)
+    });
+}
+
+gerarToken();
+setInterval(gerarToken, (1*60*60*1000))
+
+buscaListaRank();

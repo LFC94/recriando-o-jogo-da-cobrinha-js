@@ -23,9 +23,6 @@ canvas {
     justify-content: center;
 }
 
-.div_titulo {
-    height: 75px;
-}
 
 .div_pontuacao {
     display: flex;
@@ -35,15 +32,26 @@ canvas {
     height: 28px;
 }
 
+.div_rank {
+    width: 250px;
+    height: 145px;
+    border: 1px #006100 dashed;
+    padding-left: 15px;
+}
+
+.div_rank h3{
+    text-align: center;
+}
+
 .inicio-game 
  {
     background-color: #dddddd;
     display:block;
     position: absolute;
     width: 450px;
-    height: 200px;
+    height: 300px;
     top:40%;
-    margin-top:-100px;
+    margin-top:-150px;
     border: 4px solid #e0e0e0; 
     border-radius: 10px;
 }
