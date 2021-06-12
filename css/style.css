@@ -98,6 +98,7 @@ canvas {
 #pontuacao {
   font-size: smaller;
   width: 100px;
+    color: white;
 }
 
 #tituloInicio {

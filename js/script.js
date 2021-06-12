@@ -174,6 +174,12 @@ for(var i=0; i<params.length; i++) {
 
 
 function gravarRank(nome, point){
+
+    if (!name || name==null || name == "" || name == "null" ||
+        !point || point==null || point == 0){
+        return;
+    }
+
     var form = new FormData();
     form.append("name", nome.toUpperCase());
     form.append("point", point);
