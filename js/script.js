@@ -213,16 +213,18 @@ function buscaListaRank (){
 
     $.ajax(settings).done(function (response) {
         lista_Rank = $("#lista_rank");
-        lista_Rank.empty();
         if (+response.status === 1) {
             mensage = response.mensage;
             count = +mensage.length > 5 ? 5 : mensage.length;
-            lista_Rank.empty();
-            for (var index = 0; index < count; index++) {
-                item = mensage[index];
-                lista_Rank.append("<li>" + item.name + " .... " + item.point + "</li>")
+            if (count > 1) {
+                lista_Rank.empty();
+                for (var index = 0; index < count; index++) {
+                    item = mensage[index];
+                    lista_Rank.append("<li>" + item.name + " .... " + item.point + "</li>")
+                }
             }
         } else {
+            lista_Rank.empty();
             lista_Rank.append("Houve um erro ao conectar no servidor");
             console.log(response)
         }
