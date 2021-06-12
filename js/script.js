@@ -174,7 +174,6 @@ for(var i=0; i<params.length; i++) {
 
 
 function gravarRank(nome, point){
-
     if (!name || name==null || name == "" || name == "null" ||
         !point || point==null || point == 0){
         return;
@@ -216,7 +215,7 @@ function buscaListaRank (){
         if (+response.status === 1) {
             mensage = response.mensage;
             count = +mensage.length > 5 ? 5 : mensage.length;
-            if (count > 1) {
+            if (count > 0) {
                 lista_Rank.empty();
                 for (var index = 0; index < count; index++) {
                     item = mensage[index];
