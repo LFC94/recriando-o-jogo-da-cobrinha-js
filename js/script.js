@@ -203,7 +203,7 @@ function gravarRank(nome, point){
 
 function buscaListaRank (){
     var settings = {
-        "url": "http://backend.lfcapp.com.br/api/snake",
+        "url": "https://backend.lfcapp.com.br/api/snake",
         "method": "GET",
         "headers": {
             "Authorization": "Bearer " + $("#token").val()
@@ -232,7 +232,7 @@ function buscaListaRank (){
 
 function gerarToken (){
     var settings = {
-        "url": "http://backend.lfcapp.com.br/api/auth/login",
+        "url": "https://backend.lfcapp.com.br/api/auth/login",
         "method": "POST",
         "timeout": 0,
         "async": false,
