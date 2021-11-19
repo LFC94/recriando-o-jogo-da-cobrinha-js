@@ -184,7 +184,7 @@ function gravarRank(nome, point){
     form.append("point", point);
 
     var settings = {
-        "url": "http://backend.lfcapp.com.br/api/snake",
+        "url": "https://backend.lfcapp.com.br/api/snake",
         "method": "POST",
         "timeout": 0,
         "headers": {
