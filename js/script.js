@@ -14,14 +14,14 @@ var jogoRodando = false;
 let direcao = "r";
 
 function criarBG() {
-    context.fillStyle = "lightgreen";
+    context.fillStyle = "#00A7EE";
     context.fillRect(0, 0, mutiplicadorTela * box, mutiplicadorTela * box);
 }
 
 function criarSnake() {
     for (let index = 0 ; index < snake.length; index++) {
         scala = 1 - (index * (parseInt(snake.length/5) * 0.01));
-        context.fillStyle = 'rgba(0, 128, 0, ' + scala+ ')';        
+        context.fillStyle = 'rgba(255, 255, 255, ' + scala+ ')';        
         context.fillRect(snake[index].x, snake[index].y, box, box);
     }
 }
