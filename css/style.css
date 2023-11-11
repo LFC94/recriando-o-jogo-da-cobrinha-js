@@ -1,107 +1,112 @@
-*{
-    padding: 0;
-    margin: 3px;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: sans-serif;
+* {
+  padding: 0;
+  margin: 3px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: sans-serif;
 }
 
 body {
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    background-color: #000;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  background-color: #000;
 }
 
-canvas {    
-    border: rgb(114, 114, 114) 2px solid;
+canvas {
+  border: rgb(114, 114, 114) 2px solid;
 }
 
 .div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .div_head {
-    font-size: xx-large;
-    width: 512px;
-    color: #FFF;
+  font-size: xx-large;
+  width: 512px;
+  color: #fff;
 }
 
 .div_pontuacao {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    width: 512px;
-    height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 512px;
+  height: 28px;
 }
 
 .div_food {
-    display: flex;
-    justify-content: right;
-    width: 512px;
-    color: #FFF;
-    align-items: center;
+  display: flex;
+  justify-content: right;
+  width: 512px;
+  color: #fff;
+  align-items: center;
 }
 
 .div_rank {
-    width: 250px;
-    height: 145px;
-    border: 1px #006100 dashed;
-    padding-left: 15px;
+  width: 250px;
+  height: 145px;
+  border: 1px #006100 dashed;
+  padding-left: 15px;
 }
 
-.div_rank h3{
-    text-align: center;
+.div_rank h3 {
+  text-align: center;
 }
 
-.inicio-game
- {
-    background-color: #dddddd;
-    display:block;
-    position: absolute;
-    width: 450px;
-    height: 300px;
-    top:40%;
-    margin-top:-150px;
-    border: 4px solid #e0e0e0; 
-    border-radius: 10px;
+.inicio-game {
+  background-color: #dddddd;
+  display: block;
+  position: absolute;
+  width: 450px;
+  height: 300px;
+  top: 40%;
+  margin-top: -150px;
+  border: 4px solid #e0e0e0;
+  border-radius: 10px;
 }
 
 .btnStart {
-    background-color: yellowgreen;  
-    border: 1px green;
-    border-radius: 10px;  
-    width: 100px;
-    height: 50px;
-    margin-top: 10px;
-    font-size: large;
-    font-weight: bold;
+  background-color: yellowgreen;
+  border: 1px green;
+  border-radius: 10px;
+  width: 100px;
+  height: 50px;
+  margin-top: 10px;
+  font-size: large;
+  font-weight: bold;
 }
 
 .btnReset {
-    background-color: salmon;  
-    border: 1px green;
-    border-radius: 5px;
-    width: 70px;
-    padding: 3px;
-    font-size: smaller;
-    font-weight: bold;
+  background-color: salmon;
+  border: 1px green;
+  border-radius: 5px;
+  width: 70px;
+  padding: 3px;
+  font-size: smaller;
+  font-weight: bold;
 }
 
 #pontuacao_over {
-    font-size: small;
-    text-align: center;
+  font-size: small;
+  text-align: center;
 }
 
 #pontuacao {
   font-size: smaller;
   width: 100px;
-    color: white;
+  color: white;
 }
 
 #tituloInicio {
-    font-size: xx-large;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  font-size: xx-large;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+#posicao_snake,
+#posicao_ponto {
+  font-size: 8px;
+  color: white;
 }

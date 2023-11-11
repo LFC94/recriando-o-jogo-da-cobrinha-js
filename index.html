@@ -11,13 +11,19 @@
   </head>
   <body>
     <div class="div" id="div_head">
-      <div class="div div_head">
-        SNAKE GAMER!
-      </div>
+      <div class="div div_head">SNAKE GAMER!</div>
     </div>
     <div class="div">
+      <p id="posicao_snake"></p>
+      <p id="posicao_ponto"></p>
       <div class="div_pontuacao">
-        <button id="btnReset" class="btnReset" type="button" onclick="gamerOver()" style="display: none;">
+        <button
+          id="btnReset"
+          class="btnReset"
+          type="button"
+          onclick="gamerOver()"
+          style="display: none"
+        >
           Stop
         </button>
         <p id="pontuacao"></p>
@@ -29,18 +35,20 @@
           <h2 id="tituloInicio">SNAKE GAMER</h2>
         </div>
         <div class="div div_titulo">
-          <p id="pontuacao_over" ></p>
+          <p id="pontuacao_over"></p>
         </div>
         <div class="div">
           <div id="rank" class="div_rank">
-              <h3>Rank</h3>
-              <ol id="lista_rank">
-                Sem rank. Seja o Primeiro
-              </ol>
+            <h3>Rank</h3>
+            <ol id="lista_rank">
+              Sem rank. Seja o Primeiro
+            </ol>
           </div>
         </div>
-        <div class="div ">
-          <button class="btnStart" type="button" onclick="start()">Start</button>
+        <div class="div">
+          <button class="btnStart" type="button" onclick="start()">
+            Start
+          </button>
         </div>
       </div>
       <canvas id="can_snake" width="512" height="512"></canvas>
@@ -48,9 +56,11 @@
     <div class="div" id="div_food">
       <div class="div_food">
         <small>Aplicacao desenvolvida para o curso na: </small>
-        <a href="https://web.digitalinnovation.one/home"><img src="dio.png" alt="Logo Digital Innovation One" ></a>
+        <a href="https://web.digitalinnovation.one/home"
+          ><img src="dio.png" alt="Logo Digital Innovation One"
+        /></a>
       </div>
     </div>
-    <input type="hidden" id="token" value="">
+    <input type="hidden" id="token" value="" />
   </body>
 </html>
