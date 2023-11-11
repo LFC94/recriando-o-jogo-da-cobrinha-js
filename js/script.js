@@ -253,7 +253,11 @@ function buscaListaRank() {
         for (var index = 0; index < count; index++) {
           item = mensage[index];
           lista_Rank.append(
-            "<li>" + item.name + " .... " + item.point + "</li>"
+            "<li><span>" +
+              item.name +
+              '</span> <span style="float: inline-end;">' +
+              item.point +
+              "</span></li>"
           );
         }
       }
