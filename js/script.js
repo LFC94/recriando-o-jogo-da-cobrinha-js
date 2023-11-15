@@ -238,6 +238,9 @@ function buscaListaRank() {
   var settings = {
     url: "https://backend.lfcapp.com.br/api/snake",
     method: "GET",
+    data: {
+      limit: 5,
+    },
     headers: {
       Authorization: "Bearer " + $("#token").val(),
     },
@@ -246,16 +249,18 @@ function buscaListaRank() {
   $.ajax(settings).done(function (response) {
     lista_Rank = $("#lista_rank");
     if (+response.status === 1) {
-      mensage = response.mensage;
-      count = +mensage.length > 5 ? 5 : mensage.length;
+      const message = response.mensage;
+      count = +message.length > 5 ? 5 : message.length;
       if (count > 0) {
         lista_Rank.empty();
         for (var index = 0; index < count; index++) {
-          item = mensage[index];
+          item = message[index];
           lista_Rank.append(
-            "<li><span>" +
+            '<li class="point-row"><span class="point-name">' +
+              (index + 1) +
+              " . " +
               item.name +
-              '</span> <span style="float: inline-end;">' +
+              '</span> <span class="point-rank">' +
               item.point +
               "</span></li>"
           );
@@ -264,7 +269,6 @@ function buscaListaRank() {
     } else {
       lista_Rank.empty();
       lista_Rank.append("Houve um erro ao conectar no servidor");
-      console.log(response);
     }
   });
 }
